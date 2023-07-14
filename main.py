@@ -7,7 +7,7 @@ from pytube.exceptions import VideoUnavailable
 
 def yt_download(link):
     try:
-        yt = YouTube(user_input)
+        yt = YouTube(link)
     except VideoUnavailable:
         print("Video is unavailable")
     else:
