@@ -1,4 +1,3 @@
-Here's a README file for your Python script, `main.py`, which downloads YouTube videos and merges their video and audio streams.
 
 ---
 
