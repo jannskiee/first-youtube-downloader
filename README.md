@@ -1,36 +1,64 @@
-## YouTube Video Downloader
+Here's a README file for your Python script, `main.py`, which downloads YouTube videos and merges their video and audio streams.
 
-This Python script allows you to download YouTube videos and save them as MP4 files. It utilizes the `pytube` and `moviepy` libraries to handle the downloading and processing of videos.
+---
 
-### Prerequisites
+# YouTube Video Downloader
 
-Make sure you have the following libraries installed before running the script:
+This script downloads a YouTube video and its audio, merges them, and saves the result as an MP4 file.
 
-- `pytube`
-- `moviepy`
-- `datetime`
+## Prerequisites
 
-You can install these libraries using pip:
+Make sure you have the following installed:
+
+- Python 3.x
+- `pytube` library
+- `moviepy` library
+
+You can install the required libraries using pip:
+
+```sh
+pip install pytube3 moviepy
+```
+
+## Usage
+
+1. **Run the script**:
+   ```sh
+   python main.py
+   ```
+
+2. **Input the YouTube video link**:
+   When prompted, enter the URL of the YouTube video you want to download.
+
+## How It Works
+
+1. **Download the video and audio**:
+   The script downloads the video in 1080p resolution and the audio stream separately.
+
+2. **Merge video and audio**:
+   Using `moviepy`, it merges the video and audio streams into a single MP4 file.
+
+3. **Save and clean up**:
+   The merged video is saved with the YouTube video's title as the filename. Temporary files are removed after merging.
+
+## Example
+
+Run the script and enter a YouTube link, such as:
 
 ```
-pip install pytube moviepy
+https://www.youtube.com/watch?v=f6YDKF0LVWw
 ```
 
-### Usage
+The script will download and merge the video and audio, then save it as `POP! by Nayeon.mp4`.
 
-1. Run the script using Python.
-2. When prompted, enter the YouTube video link you want to download. For example: `https://www.youtube.com/watch?v=f6YDKF0LVWw`.
-3. The script will attempt to download the video from the provided link.
-4. If the video is available, the script will display information about the video, such as its title, length, views, ratings, and description.
-5. The script will then download the video in 1080p resolution and save it as an MP4 file.
-6. It will also extract the audio from the video and save it as an MP3 file.
-7. Finally, the script will combine the video and audio into a single MP4 file, using the video's title as the filename.
-8. The temporary video and audio files will be deleted after the combination process is complete.
-9. The script will print a success message once the download and processing are finished.
+## Error Handling
 
-Please note that the availability of video streams and their quality may vary depending on the YouTube video.
+- If the video is unavailable, the script will print an error message.
+- The script provides information about the video such as title, length, views, rating, and description before downloading.
 
-### Example
+## Code Explanation
+
+Here is a brief overview of the code:
 
 ```python
 import os
@@ -39,10 +67,9 @@ import moviepy.editor as mpe
 from pytube import YouTube
 from pytube.exceptions import VideoUnavailable
 
-
 def yt_download(link):
     try:
-        yt = YouTube(user_input)
+        yt = YouTube(link)
     except VideoUnavailable:
         print("Video is unavailable")
     else:
@@ -71,10 +98,16 @@ def yt_download(link):
         os.remove("audio.mp3")
         print(f"\nDownloaded {user_input} ({yt.title}) successfully!")
 
-
 # Example Link: https://www.youtube.com/watch?v=f6YDKF0LVWw (POP! by Nayeon)
-user_input = str(input("Enter the YouTube video link: "))
+user_input = str(input("Enter the youtube video link: "))
 yt_download(user_input)
 ```
 
-Note: The above example is interactive, where the user is prompted to enter the YouTube video link. You can modify the script to accept the link in a different way if desired.
+## Acknowledgments
+
+- This script uses the `pytube` library for downloading YouTube videos.
+- The `moviepy` library is used for video and audio processing.
+
+---
+
+Feel free to modify the README as needed to better fit your specific use case or preferences.
